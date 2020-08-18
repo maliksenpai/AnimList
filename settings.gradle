@@ -1,0 +1,2 @@
+rootProject.name='PokemonTraining'
+include ':app'

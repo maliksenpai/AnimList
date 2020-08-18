@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/listlayout"
+    android:maxHeight="80dp">
+
+  <ImageView
+      android:id="@+id/listanimeimage"
+      android:layout_width="200dp"
+      android:layout_height="200dp"
+      android:scaleType="fitCenter"
+
+      />
+
+  <TextView
+      android:id="@+id/listanimetitle"
+      android:layout_width="wrap_content"
+      android:textColor="#000"
+      android:layout_toRightOf="@+id/listanimeimage"
+      android:layout_marginTop="20dp"
+      android:layout_marginLeft="20dp"
+      android:layout_height="wrap_content"
+      android:text="TextView" />
+
+  <TextView
+      android:id="@+id/listepisodetext"
+      android:layout_width="wrap_content"
+      android:layout_below="@+id/listanimetitle"
+      android:layout_toRightOf="@+id/listanimeimage"
+      android:layout_marginLeft="20dp"
+      android:layout_marginTop="20dp"
+      android:textColor="#000"
+      android:textStyle="bold"
+      android:layout_height="wrap_content"
+      android:text="Episodes" />
+
+  <TextView
+      android:id="@+id/listepisode"
+      android:layout_width="wrap_content"
+      android:layout_below="@+id/listepisodetext"
+      android:layout_toRightOf="@id/listanimeimage"
+      android:layout_marginLeft="20dp"
+      android:layout_marginTop="20dp"
+      android:textColor="#000"
+      android:layout_height="wrap_content"
+      android:text="TextView" />
+
+  <TextView
+      android:id="@+id/listscoretext"
+      android:layout_width="wrap_content"
+      android:textColor="#000"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/listanimetitle"
+      android:layout_toRightOf="@id/listepisode"
+      android:layout_marginLeft="50dp"
+      android:textStyle="bold"
+      android:layout_marginTop="20dp"
+      android:text="Score" />
+
+  <TextView
+      android:id="@+id/listscore"
+      android:layout_width="wrap_content"
+      android:textColor="#000"
+      android:layout_below="@+id/listscoretext"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@+id/listepisode"
+      android:layout_marginTop="20dp"
+      android:layout_marginLeft="50dp"
+      android:text="TextView" />
+
+</RelativeLayout>
