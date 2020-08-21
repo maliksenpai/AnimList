@@ -31,7 +31,7 @@ The application lists the animations with the help of an API and allows you to r
   <li>DataBinding</li>
   <li>LiveData</li>
   <li>Retrofit</li>
-  <li>OkHttp</li
+  <li>OkHttp</li>
   <li>Glide</li>
   <li>RoomDatabase</li>
 </ul>
