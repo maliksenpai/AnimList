@@ -34,4 +34,5 @@ The application lists the animations with the help of an API and allows you to r
   <li>OkHttp</li>
   <li>Glide</li>
   <li>RoomDatabase</li>
+  <li>Shared Preferences</li>
 </ul>
