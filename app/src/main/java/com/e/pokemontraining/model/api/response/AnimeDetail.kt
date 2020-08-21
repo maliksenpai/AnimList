@@ -8,5 +8,7 @@ data class AnimeDetail(
     @SerializedName("title")
     var title:String,
     @SerializedName("synopsis")
-    var synopsis:String
+    var synopsis:String,
+    @SerializedName("mal_id")
+    var id:String
 )

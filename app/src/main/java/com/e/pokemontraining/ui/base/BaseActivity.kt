@@ -23,6 +23,8 @@ abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel>(private v
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setuplifecycleowner()
+        init()
+        initviewmodel()
     }
 
     @LayoutRes

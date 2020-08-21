@@ -1,6 +1,8 @@
 package com.e.pokemontraining.model.api
 
 import com.e.pokemontraining.model.api.response.AnimeDetail
+import com.e.pokemontraining.model.api.response.UserAnime
+import com.e.pokemontraining.model.api.response.UserAnimeList
 import com.e.pokemontraining.model.api.response.Year
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -28,5 +30,7 @@ public class AnimeApi (){
         fun getlist(@Path("year")day :String): Call<Year>
         @GET("anime/{id}")
         fun getanime(@Path("id")id:String):Call<AnimeDetail>
+        @GET("user/{id}/animelist/{type}")
+        fun getuseranimes(@Path("id")id:String,@Path("type")type:String):Call<UserAnimeList>
     }
 }

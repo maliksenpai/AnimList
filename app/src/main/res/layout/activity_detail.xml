@@ -1,44 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.detail.DetailActivity">
-
-    <ScrollView
+<layout>
+    <data>
+        <variable
+            name="modelView"
+            type="com.e.pokemontraining.ui.detail.DetailViewModel" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.detail.DetailActivity">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/detailimage"
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                tools:srcCompat="@tools:sample/avatars" />
-
-            <TextView
-                android:id="@+id/detailtitle"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:textSize="30dp"
-                android:layout_marginTop="20dp"
-                android:textStyle="bold"
-                android:textColor="#000"
-                android:text="TextView" />
+                android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/detailsynopsis"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textColor="#000" />
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+                <ImageView
+                    android:id="@+id/detailimage"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/detailtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:textSize="30dp"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/detailsynopsis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textColor="#000" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

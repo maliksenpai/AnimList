@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.e.pokemontraining.ui.nickname.NicknameViewModel" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.nickname.NicknameActivity">
+
+        <EditText
+            android:id="@+id/nicknametext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@={viewModel.nickname}"
+            android:hint="Nickname" />
+
+        <Button
+            android:id="@+id/nicknamebutton"
+            android:layout_below="@id/nicknametext"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:textColor="#fff"
+            android:onClick="@{(v) -> viewModel.setnickname(v)}"
+            android:background="@color/colorAccent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Done" />
+    </RelativeLayout>
+</layout>

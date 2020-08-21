@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AnimList</string>
+    <string name="navigation_open">Open Navigation Bar</string>
+    <string name="navigation_close">Close Navigation Bar</string>
 </resources>

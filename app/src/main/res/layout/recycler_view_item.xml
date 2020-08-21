@@ -23,7 +23,7 @@
       android:layout_marginTop="20dp"
       android:layout_marginLeft="20dp"
       android:layout_height="wrap_content"
-      android:text="TextView" />
+      android:text="" />
 
   <TextView
       android:id="@+id/listepisodetext"
@@ -46,7 +46,7 @@
       android:layout_marginTop="20dp"
       android:textColor="#000"
       android:layout_height="wrap_content"
-      android:text="TextView" />
+      android:text="" />
 
   <TextView
       android:id="@+id/listscoretext"
@@ -69,6 +69,16 @@
       android:layout_toRightOf="@+id/listepisode"
       android:layout_marginTop="20dp"
       android:layout_marginLeft="50dp"
-      android:text="TextView" />
+      android:text="" />
+
+  <ImageView
+      android:id="@+id/listfavorite"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/listepisode"
+      android:layout_toRightOf="@id/listanimeimage"
+      android:layout_marginLeft="30dp"
+      android:layout_marginTop="20dp"
+      app:srcCompat="@android:drawable/btn_star_big_on" />
 
 </RelativeLayout>

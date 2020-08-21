@@ -7,23 +7,21 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.e.pokemontraining.R
+import com.e.pokemontraining.databinding.ActivityDetailBinding
 import com.e.pokemontraining.model.api.AnimeApi
 import com.e.pokemontraining.model.api.response.AnimeDetail
+import com.e.pokemontraining.ui.base.BaseActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : BaseActivity<ActivityDetailBinding,DetailViewModel>(DetailViewModel::class.java) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
         var id = intent.getStringExtra("id")
-        init(id)
-    }
-
-    fun init(id:String){
         loadpage(id)
     }
+
 
     fun loadpage(id:String){
         var postservice = AnimeApi().build()?.create(AnimeApi.AnimeApiInterface::class.java)
@@ -43,5 +41,17 @@ class DetailActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.activity_detail
+    }
+
+    override fun init() {
+
+    }
+
+    override fun initviewmodel() {
+        binding.modelView=viewModel
     }
 }

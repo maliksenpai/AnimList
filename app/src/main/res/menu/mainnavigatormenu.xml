@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuseason"
+        android:title="Season" />
+    <item
+        android:id="@+id/menufavorites"
+        android:title="Favorites" />
+    <item
+        android:id="@+id/menucompleted"
+        android:title="Completed" />
+    <item
+        android:id="@+id/menuonhold"
+        android:title="On-Hold" />
+    <item
+        android:id="@+id/menuwatching"
+        android:title="Watching" />
+</menu>
