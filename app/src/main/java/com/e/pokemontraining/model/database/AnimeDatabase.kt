@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.e.pokemontraining.model.database.dao.AnimeDao
 import com.e.pokemontraining.model.database.entity.AnimeEntity
 
-@Database(entities = arrayOf(AnimeEntity::class) , version = 1)
+@Database(entities = arrayOf(AnimeEntity::class), version = 1)
 abstract class AnimeDatabase : RoomDatabase() {
-    abstract fun dao():AnimeDao
+    abstract fun dao(): AnimeDao
 }

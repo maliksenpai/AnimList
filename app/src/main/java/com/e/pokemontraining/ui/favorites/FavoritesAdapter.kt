@@ -13,10 +13,11 @@ import com.e.pokemontraining.R
 import com.e.pokemontraining.model.api.response.AnimeDetail
 import com.e.pokemontraining.ui.detail.DetailActivity
 
-class FavoritesAdapter(val list:MutableList<AnimeDetail>): RecyclerView.Adapter<FavoritesAdapter.ViewHolder>() {
+class FavoritesAdapter(val list: MutableList<AnimeDetail>) :
+    RecyclerView.Adapter<FavoritesAdapter.ViewHolder>() {
 
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var title = itemView.findViewById<TextView>(R.id.listanimetitle)
         var image = itemView.findViewById<ImageView>(R.id.listanimeimage)
         var score = itemView.findViewById<TextView>(R.id.listscore)
@@ -28,7 +29,8 @@ class FavoritesAdapter(val list:MutableList<AnimeDetail>): RecyclerView.Adapter<
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_item,parent,false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -38,15 +40,15 @@ class FavoritesAdapter(val list:MutableList<AnimeDetail>): RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var context = holder.itemView.context
-        holder.scoretext.visibility=View.INVISIBLE
-        holder.episodetext.visibility=View.INVISIBLE
+        holder.scoretext.visibility = View.INVISIBLE
+        holder.episodetext.visibility = View.INVISIBLE
         holder.title.setText(list.get(position).title)
         Glide.with(context).load(list.get(position).image).into(holder.image)
         holder.layout.setOnClickListener {
             var intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra("id",list.get(position).id)
+            intent.putExtra("id", list.get(position).id)
             context.startActivity(intent)
         }
-        holder.favorite.visibility=View.INVISIBLE
+        holder.favorite.visibility = View.INVISIBLE
     }
 }

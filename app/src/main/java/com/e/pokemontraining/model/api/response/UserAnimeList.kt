@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class UserAnimeList(
     @SerializedName("anime")
-    var animes:List<UserAnime>
+    var animes: List<UserAnime>
 )

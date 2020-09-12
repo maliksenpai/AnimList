@@ -1,42 +1,67 @@
 package com.e.pokemontraining.ui.main
 
-import android.content.Context
-import android.view.View
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.RecyclerView
+import com.e.pokemontraining.model.api.AnimeApi
+import com.e.pokemontraining.model.api.response.Anime
+import com.e.pokemontraining.model.api.response.Year
 import com.e.pokemontraining.ui.base.BaseViewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainViewModel : BaseViewModel() {
 
     var radiobutton = MutableLiveData<String>()
 
-    fun winterradio(){
+    fun winterradio() {
         changeradio(1)
     }
 
-    fun springradio(){
+    fun springradio() {
         changeradio(2)
     }
 
-    fun summerradio(){
+    fun summerradio() {
         changeradio(3)
     }
 
-    fun fallradio(){
+    fun fallradio() {
         changeradio(4)
     }
 
-    fun changeradio(season:Int):MutableLiveData<String>{
-        when(season){
-            1-> radiobutton.value="winter"
-            2-> radiobutton.value="spring"
-            3-> radiobutton.value="summer"
-            4-> radiobutton.value="fall"
+    fun changeradio(season: Int): MutableLiveData<String> {
+        when (season) {
+            1 -> radiobutton.value = "winter"
+            2 -> radiobutton.value = "spring"
+            3 -> radiobutton.value = "summer"
+            4 -> radiobutton.value = "fall"
         }
         return radiobutton
     }
-    
+
+    fun listanime(season: String, recyclerView: RecyclerView) {
+        var postservice = AnimeApi().build()?.create(AnimeApi.AnimeApiInterface::class.java)
+        var list: MutableList<Anime> = emptyList<Anime>().toMutableList()
+        recyclerView.adapter = MainAdapter(list)
+        var listpost = postservice?.getlist(season)
+        listpost?.enqueue(object : Callback<Year> {
+            override fun onFailure(call: Call<Year>, t: Throwable) {
+                Log.d("gelenhata", t.message)
+            }
+
+            override fun onResponse(call: Call<Year>, response: Response<Year>) {
+                var animes = response.body()?.listanime
+                if (animes != null) {
+                    for (anime in animes) {
+                        list.add(anime)
+                    }
+                    recyclerView.adapter = MainAdapter(list)
+                }
+            }
+        })
+    }
+
 
 }

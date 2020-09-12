@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class Year(
     @SerializedName("anime")
-    var listanime:List<Anime>
+    var listanime: List<Anime>
 )

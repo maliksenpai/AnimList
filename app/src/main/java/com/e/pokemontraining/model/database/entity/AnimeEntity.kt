@@ -10,5 +10,5 @@ data class AnimeEntity(
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "name")
-    var name:String
+    var name: String
 )
