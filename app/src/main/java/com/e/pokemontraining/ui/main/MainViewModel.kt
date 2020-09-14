@@ -7,11 +7,18 @@ import com.e.pokemontraining.model.api.AnimeApi
 import com.e.pokemontraining.model.api.response.Anime
 import com.e.pokemontraining.model.api.response.Year
 import com.e.pokemontraining.ui.base.BaseViewModel
+import org.koin.dsl.module
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
 
-class MainViewModel : BaseViewModel() {
+val mainmodule = module {
+    factory { MainViewModel(get()) }
+}
+
+public class MainViewModel(private val retrofit: Retrofit) : BaseViewModel() {
+
 
     var radiobutton = MutableLiveData<String>()
 
@@ -44,7 +51,7 @@ class MainViewModel : BaseViewModel() {
     fun listanime(season: String, recyclerView: RecyclerView) {
         var postservice = AnimeApi().build()?.create(AnimeApi.AnimeApiInterface::class.java)
         var list: MutableList<Anime> = emptyList<Anime>().toMutableList()
-        recyclerView.adapter = MainAdapter(list)
+        //recyclerView.adapter = MainAdapter(list)
         var listpost = postservice?.getlist(season)
         listpost?.enqueue(object : Callback<Year> {
             override fun onFailure(call: Call<Year>, t: Throwable) {
@@ -57,6 +64,7 @@ class MainViewModel : BaseViewModel() {
                     for (anime in animes) {
                         list.add(anime)
                     }
+                    Log.d("gelen", list[0].title)
                     recyclerView.adapter = MainAdapter(list)
                 }
             }

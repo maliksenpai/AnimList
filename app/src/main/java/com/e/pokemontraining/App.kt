@@ -1,19 +1,19 @@
 package com.e.pokemontraining
 
 import android.app.Application
+import com.e.pokemontraining.di.networkModule
+import com.e.pokemontraining.ui.main.mainmodule
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 
 class App : Application() {
-    var instance: App? = null
-
     override fun onCreate() {
         super.onCreate()
-        instance=this
-    }
 
-    fun getApp(): App {
-        if(instance==null){
-            instance=this
+        startKoin {
+            this@App
+            modules(networkModule, mainmodule)
+            androidLogger()
         }
-        return instance as App
     }
 }

@@ -7,10 +7,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 
-abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel>(private val ViewModel: Class<VM>) :
+public abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel>(private val ViewModel: Class<VM>) :
     AppCompatActivity() {
-    //protected lateinit var binding:BM
-    //protected lateinit var viewModel: VM
     val binding by lazy {
         DataBindingUtil.setContentView(this, getLayout()) as VDB
     }

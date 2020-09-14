@@ -1,7 +1,6 @@
 package com.e.pokemontraining.model.api
 
 import com.e.pokemontraining.model.api.response.AnimeDetail
-import com.e.pokemontraining.model.api.response.UserAnime
 import com.e.pokemontraining.model.api.response.UserAnimeList
 import com.e.pokemontraining.model.api.response.Year
 import okhttp3.OkHttpClient

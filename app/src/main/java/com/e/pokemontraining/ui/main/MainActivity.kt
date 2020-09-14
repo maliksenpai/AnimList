@@ -20,7 +20,8 @@ import com.e.pokemontraining.ui.watching.WatchingActivity
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(MainViewModel::class.java),
+public class MainActivity :
+    BaseActivity<ActivityMainBinding, MainViewModel>(MainViewModel::class.java),
     NavigationView.OnNavigationItemSelectedListener {
     private lateinit var drawer: DrawerLayout
     val DEFAULT_SEASON = "winter"
@@ -28,6 +29,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(MainViewMo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
+
     }
 
     override fun getLayout(): Int {
@@ -36,6 +38,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(MainViewMo
 
     override fun init() {
         designpage()
+
         var recyclerView = listanime
         recyclerView.addItemDecoration(
             DividerItemDecoration(
@@ -43,8 +46,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(MainViewMo
                 DividerItemDecoration.VERTICAL
             )
         )
+
         recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
         viewModel.listanime(DEFAULT_SEASON, recyclerView)
+
     }
 
     override fun initviewmodel() {
@@ -58,6 +63,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(MainViewMo
                     DividerItemDecoration.VERTICAL
                 )
             )
+
             recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
             viewModel.listanime(it, recyclerView)
         }
