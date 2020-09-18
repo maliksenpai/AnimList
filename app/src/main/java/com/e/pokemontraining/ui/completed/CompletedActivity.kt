@@ -10,10 +10,12 @@ import com.e.pokemontraining.ui.base.BaseActivity
 import com.e.pokemontraining.ui.nickname.NicknameActivity
 import com.e.pokemontraining.utils.Nickname
 import kotlinx.android.synthetic.main.activity_completed.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class CompletedActivity :
     BaseActivity<ActivityCompletedBinding, CompletedViewModel>(CompletedViewModel::class.java) {
 
+    private val completedViewModel:CompletedViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -28,7 +30,7 @@ class CompletedActivity :
     }
 
     override fun initviewmodel() {
-        binding.modelView = viewModel
+        binding.modelView = completedViewModel
     }
 
     fun initdesign() {
@@ -47,7 +49,7 @@ class CompletedActivity :
                 )
             )
             recyclerView.layoutManager = LinearLayoutManager(this)
-            viewModel.listanime(recyclerView, Nickname().getnickname(this)!!)
+            completedViewModel.listanime(recyclerView, Nickname().getnickname(this)!!)
         }
     }
 

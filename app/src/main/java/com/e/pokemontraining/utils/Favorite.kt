@@ -1,40 +1,40 @@
 package com.e.pokemontraining.utils
 
 import android.content.Context
-import android.util.Log
 import androidx.room.Room
 import com.e.pokemontraining.model.database.AnimeDatabase
+import com.e.pokemontraining.model.database.dao.AnimeDao
 import com.e.pokemontraining.model.database.entity.AnimeEntity
 
-class Favorite() {
-    fun checkfavorite(id: String, context: Context) {
-        val db = Room.databaseBuilder(
+class Favorite {
+
+    fun checkfavorite(id: String, dao:AnimeDao) {
+        /*val db = Room.databaseBuilder(
             context,
             AnimeDatabase::class.java, "animes"
-        ).allowMainThreadQueries().build()
+        ).allowMainThreadQueries().build()*/
         // db.dao().nukedatabase()
-        if (db.dao()?.checkanime(id)?.name == null) {
-            addfavorite(id, context)
+        if (dao.checkanime(id)?.name == null) {
+            addfavorite(id, dao)
         } else {
-            removefavorite(id, context)
+            removefavorite(id, dao)
         }
     }
 
-    fun removefavorite(id: String, context: Context) {
-        val db = Room.databaseBuilder(
+    fun removefavorite(id: String, dao:AnimeDao) {
+        /*val db = Room.databaseBuilder(
             context,
             AnimeDatabase::class.java, "animes"
-        ).allowMainThreadQueries().build()
-        db.dao().deleteanime(AnimeEntity(id))
+        ).allowMainThreadQueries().build()*/
+        dao.deleteanime(AnimeEntity(id))
     }
 
-    fun addfavorite(id: String, context: Context) {
-        val db = Room.databaseBuilder(
+    fun addfavorite(id: String, dao:AnimeDao) {
+       /* val db = Room.databaseBuilder(
             context,
             AnimeDatabase::class.java, "animes"
-        ).allowMainThreadQueries().build()
-        db.dao().addanime(AnimeEntity((id)))
-        Log.d("gelen", db.dao().getfavoriteanimes().toString())
+        ).allowMainThreadQueries().build()*/
+        dao.addanime(AnimeEntity((id)))
     }
 
     fun listanimes(context: Context): List<AnimeEntity> {
@@ -44,5 +44,7 @@ class Favorite() {
         ).allowMainThreadQueries().build()
         return db.dao().getfavoriteanimes()
     }
+
+
 
 }

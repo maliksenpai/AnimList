@@ -1,8 +1,7 @@
 package com.e.pokemontraining.ui.base
 
 import androidx.lifecycle.ViewModel
-import com.e.pokemontraining.model.api.AnimeApi
+import org.koin.core.KoinComponent
 
-public open class BaseViewModel : ViewModel() {
-
+abstract class BaseViewModel : ViewModel() , KoinComponent {
 }

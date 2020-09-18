@@ -19,13 +19,16 @@ import com.e.pokemontraining.ui.onhold.OnHoldActivity
 import com.e.pokemontraining.ui.watching.WatchingActivity
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.viewmodel.ext.android.viewModel
+
 
 public class MainActivity :
-    BaseActivity<ActivityMainBinding, MainViewModel>(MainViewModel::class.java),
+    BaseActivity<ActivityMainBinding,MainViewModel>(MainViewModel::class.java),
     NavigationView.OnNavigationItemSelectedListener {
+
+    private val mainViewModel : MainViewModel by viewModel()
     private lateinit var drawer: DrawerLayout
     val DEFAULT_SEASON = "winter"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
@@ -48,12 +51,13 @@ public class MainActivity :
         )
 
         recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
-        viewModel.listanime(DEFAULT_SEASON, recyclerView)
-
+        //viewModel.listanime(DEFAULT_SEASON, recyclerView)
+        mainViewModel.listanime(DEFAULT_SEASON,recyclerView)
     }
 
     override fun initviewmodel() {
-        binding.viewmodel = viewModel
+        //binding.viewmodel = viewModel
+        binding.viewmodel = mainViewModel
         var i = 1
         val seasonobserver = Observer<String> {
             var recyclerView = listanime
@@ -65,9 +69,11 @@ public class MainActivity :
             )
 
             recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
-            viewModel.listanime(it, recyclerView)
+            //viewModel.listanime(it, recyclerView)
+            mainViewModel.listanime(it,recyclerView)
         }
-        viewModel.radiobutton.observe(this, seasonobserver)
+        //viewModel.radiobutton.observe(this, seasonobserver)
+        mainViewModel.radiobutton.observe(this,seasonobserver)
     }
 
     fun designpage() {

@@ -5,16 +5,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.e.pokemontraining.model.api.AnimeApi
 import com.e.pokemontraining.model.api.response.UserAnime
 import com.e.pokemontraining.model.api.response.UserAnimeList
+import com.e.pokemontraining.model.database.dao.AnimeDao
 import com.e.pokemontraining.ui.base.BaseViewModel
 import retrofit2.Call
 import retrofit2.Response
+import retrofit2.Retrofit
 
-class WatchingViewModel : BaseViewModel() {
+class WatchingViewModel constructor(val retrofit: Retrofit,val dao: AnimeDao) : BaseViewModel() {
     val TYPE: String = "watching"
     fun listanime(nickname: String, recyclerView: RecyclerView) {
-        var postservice = AnimeApi().build()?.create(AnimeApi.AnimeApiInterface::class.java)
+        //var postservice = AnimeApi().build()?.create(AnimeApi.AnimeApiInterface::class.java)
+        val postservice = retrofit.create(AnimeApi.AnimeApiInterface::class.java)
         var list: MutableList<UserAnime> = emptyList<UserAnime>().toMutableList()
-        recyclerView.adapter = WatchingAdapter(list)
+        recyclerView.adapter = WatchingAdapter(list,dao)
         var listpost = postservice?.getuseranimes(nickname, TYPE)
         listpost?.enqueue(object : retrofit2.Callback<UserAnimeList> {
             override fun onFailure(call: Call<UserAnimeList>, t: Throwable) {
@@ -28,7 +31,7 @@ class WatchingViewModel : BaseViewModel() {
                     for (anime in animes) {
                         list.add(anime)
                     }
-                    recyclerView.adapter = WatchingAdapter(list)
+                    recyclerView.adapter = WatchingAdapter(list,dao)
                 }
             }
 

@@ -8,9 +8,11 @@ import com.e.pokemontraining.databinding.ActivityFavoritesBinding
 import com.e.pokemontraining.ui.base.BaseActivity
 import com.e.pokemontraining.utils.Favorite
 import kotlinx.android.synthetic.main.activity_favorites.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class FavoritesActivity :
     BaseActivity<ActivityFavoritesBinding, FavoritesViewModel>(FavoritesViewModel::class.java) {
+    private val favoritesViewModel:FavoritesViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -24,12 +26,12 @@ class FavoritesActivity :
         recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         recyclerView.layoutManager = LinearLayoutManager(this)
         var list = Favorite().listanimes(this)
-        viewModel.listanime(recyclerView, list)
+        favoritesViewModel.listanime(recyclerView, list)
         initdesign()
     }
 
     override fun initviewmodel() {
-        binding.modelView = viewModel
+        binding.modelView = favoritesViewModel
     }
 
     fun initdesign() {

@@ -9,13 +9,15 @@ import com.e.pokemontraining.ui.base.BaseViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
 
-class FavoritesViewModel : BaseViewModel() {
+class FavoritesViewModel constructor(val retrofit: Retrofit) : BaseViewModel() {
     fun listanime(recyclerView: RecyclerView, list: List<AnimeEntity>) {
         var animelist: MutableList<AnimeDetail> = mutableListOf()
         recyclerView.adapter = FavoritesAdapter(animelist)
         for (anime in list) {
-            var postservice = AnimeApi().build()?.create(AnimeApi.AnimeApiInterface::class.java)
+           // var postservice = AnimeApi().build()?.create(AnimeApi.AnimeApiInterface::class.java)
+            var postservice = retrofit.create(AnimeApi.AnimeApiInterface::class.java)
             postservice?.getanime(anime.name)?.enqueue(object : Callback<AnimeDetail> {
                 override fun onFailure(call: Call<AnimeDetail>, t: Throwable) {
                     Log.d("gelen", "hata")

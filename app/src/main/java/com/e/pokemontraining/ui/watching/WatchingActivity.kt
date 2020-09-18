@@ -11,10 +11,12 @@ import com.e.pokemontraining.ui.base.BaseActivity
 import com.e.pokemontraining.ui.nickname.NicknameActivity
 import com.e.pokemontraining.utils.Nickname
 import kotlinx.android.synthetic.main.activity_watching.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class WatchingActivity :
     BaseActivity<ActivityWatchingBinding, WatchingViewModel>(WatchingViewModel::class.java) {
 
+    private val watchingViewModel:WatchingViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +34,7 @@ class WatchingActivity :
     }
 
     override fun initviewmodel() {
-        binding.modelView = viewModel
+        binding.modelView = watchingViewModel
     }
 
     fun initdesign() {
@@ -51,7 +53,7 @@ class WatchingActivity :
                 )
             )
             recyclerView.layoutManager = LinearLayoutManager(this)
-            viewModel.listanime(Nickname().getnickname(this)!!, recyclerView)
+            watchingViewModel.listanime(Nickname().getnickname(this)!!, recyclerView)
         }
     }
 

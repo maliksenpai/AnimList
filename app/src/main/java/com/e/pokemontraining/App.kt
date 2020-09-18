@@ -1,8 +1,9 @@
 package com.e.pokemontraining
 
 import android.app.Application
-import com.e.pokemontraining.di.networkModule
-import com.e.pokemontraining.ui.main.mainmodule
+import com.e.pokemontraining.di.ApiModule
+import com.e.pokemontraining.di.DatabaseModule
+import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
@@ -12,7 +13,8 @@ class App : Application() {
 
         startKoin {
             this@App
-            modules(networkModule, mainmodule)
+            modules(listOf(ApiModule, DatabaseModule))
+            androidContext(applicationContext)
             androidLogger()
         }
     }

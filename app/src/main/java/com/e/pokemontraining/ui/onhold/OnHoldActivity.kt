@@ -10,9 +10,11 @@ import com.e.pokemontraining.ui.base.BaseActivity
 import com.e.pokemontraining.ui.nickname.NicknameActivity
 import com.e.pokemontraining.utils.Nickname
 import kotlinx.android.synthetic.main.activity_on_hold.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class OnHoldActivity :
     BaseActivity<ActivityOnHoldBinding, OnHoldViewModel>(OnHoldViewModel::class.java) {
+    private val onHoldViewModel:OnHoldViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +30,7 @@ class OnHoldActivity :
     }
 
     override fun initviewmodel() {
-        binding.modelView = viewModel
+        binding.modelView = onHoldViewModel
     }
 
     fun initdesign() {
@@ -47,7 +49,7 @@ class OnHoldActivity :
                 )
             )
             recyclerView.layoutManager = LinearLayoutManager(this)
-            viewModel.listanime(Nickname().getnickname(this)!!, recyclerView)
+            onHoldViewModel.listanime(Nickname().getnickname(this)!!, recyclerView)
         }
     }
 

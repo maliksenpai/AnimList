@@ -11,10 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.e.pokemontraining.R
 import com.e.pokemontraining.model.api.response.Anime
+import com.e.pokemontraining.model.database.dao.AnimeDao
 import com.e.pokemontraining.ui.detail.DetailActivity
 import com.e.pokemontraining.utils.Favorite
 
-class MainAdapter(val list: MutableList<Anime>) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+class MainAdapter(val list: MutableList<Anime>,val dao: AnimeDao) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -48,7 +49,7 @@ class MainAdapter(val list: MutableList<Anime>) : RecyclerView.Adapter<MainAdapt
             context.startActivity(intent)
         }
         holder.favorite.setOnClickListener {
-            Favorite().checkfavorite(list.get(position).id, context)
+            Favorite().checkfavorite(list.get(position).id, dao)
         }
     }
 }
