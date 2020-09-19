@@ -4,10 +4,8 @@ import android.view.View
 import android.widget.Toast
 import com.e.pokemontraining.ui.base.BaseViewModel
 import com.e.pokemontraining.utils.Nickname
-import retrofit2.Retrofit
 
-class NicknameViewModel : BaseViewModel() {
-    var retrofitt : Retrofit? = null
+class NicknameViewModel constructor() : BaseViewModel() {
 
 
     public var nickname: String = ""

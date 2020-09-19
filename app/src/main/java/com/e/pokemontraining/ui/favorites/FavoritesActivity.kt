@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.e.pokemontraining.R
 import com.e.pokemontraining.databinding.ActivityFavoritesBinding
 import com.e.pokemontraining.ui.base.BaseActivity
-import com.e.pokemontraining.utils.Favorite
 import kotlinx.android.synthetic.main.activity_favorites.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -22,16 +21,16 @@ class FavoritesActivity :
     }
 
     override fun init() {
-        var recyclerView = listanime
-        recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        var list = Favorite().listanimes(this)
-        favoritesViewModel.listanime(recyclerView, list)
+        //var list = Favorite().listanimes(this)
         initdesign()
     }
 
     override fun initviewmodel() {
         binding.modelView = favoritesViewModel
+        var recyclerView = listanime
+        recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        favoritesViewModel.listanime(recyclerView)
     }
 
     fun initdesign() {
